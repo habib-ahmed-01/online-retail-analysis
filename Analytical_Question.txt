@@ -1,0 +1,45 @@
+Customer Behaviour Questions
+-- Who are the most valuable customers?
+Answered by ranking customers by total lifetime spend — identifying the top 10 who contribute disproportionately to overall revenue.
+
+-- What does a typical basket look like?
+Answered by computing average basket value (£) and average basket units per transaction — both overall across all transactions and broken down per customer. The summary statistics (mean, min, max) give a full picture of the spending range.
+
+Segmentation Questions
+-- Which customers should be prioritised for retention, and which are slipping away?
+Answered by the full RFM analysis. Every customer gets scored 1–5 on Recency (how recently they bought), Frequency (how often), and Monetary (how much they spent), then placed into one of six segments:
+
+Champions — bought recently, buy often, spend the most
+Loyal Customers — high frequency and spend, reliable base
+Potential Loyalists — recent buyers who could become loyal with nudging
+New Customers — bought once recently, need to be converted to repeat buyers
+At-Risk — used to buy regularly but have gone quiet
+Lost / Lapsed — haven't bought in a long time, low engagement
+
+
+Revenue & Trend Questions
+-- What is the cumulative revenue trajectory?
+Answered by the running total query using SUM() OVER() — shows how revenue accumulated across the full 12-month period.
+
+-- Which were the top 3 revenue months?
+Directly answered by ordering monthly revenue descending and taking the top 3.
+
+-- When during the week do customers shop most?
+Answered by grouping transactions by day of week — reveals which days drive the most orders, useful for scheduling email campaigns or promotions.
+
+Product Questions
+-- Which products make the most money?
+Answered by grouping revenue by StockCode and Description, ordered descending — identifies the top earners driving the majority of revenue.
+
+-- Which products sell the most units?
+Answered separately from revenue — a product can sell huge volumes at a low price without being a top revenue driver, so both are measured independently.
+
+-- How much revenue does each product generate per order it appears in?
+Answered by the join query dividing total product revenue by the number of distinct orders it appeared in — a measure of revenue efficiency per product.
+
+Geographic Questions
+-- Which countries contribute the most revenue?
+Answered by grouping total revenue by country, showing the UK's dominance and the relative size of markets like Germany, France, and Ireland.
+
+-- Who are the top-ranked customers within each country?
+Answered using RANK() OVER (PARTITION BY Country) — ranks customers by revenue separately within each country, so you can find the best customer in Germany, France, etc. independently.
